@@ -1,6 +1,10 @@
+import 'package:baby_shop_hub/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hugeicons/hugeicons.dart';
+
+import 'login.dart';
+import 'register.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -13,7 +17,6 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
-    var screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       body: Column(
@@ -29,14 +32,12 @@ class _ProfileState extends State<Profile> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  // Left Icon
                   HugeIcon(
                     icon: HugeIcons.strokeRoundedNotification03,
                     color: Colors.white,
                     size: 20.0,
                   ),
-                  SizedBox(width: 10),
-                  // Right Icon
+                  const SizedBox(width: 10),
                   HugeIcon(
                     icon: HugeIcons.strokeRoundedSettings02,
                     color: Colors.white,
@@ -46,16 +47,16 @@ class _ProfileState extends State<Profile> {
               ),
             ),
           ),
+          // Profile Section
           Container(
             width: double.infinity,
             height: screenHeight * 0.15, // Adjusted height
-
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(10),
                 bottomRight: Radius.circular(10),
               ),
-              color: const Color.fromARGB(255, 255, 106, 106),
+              color: Color.fromARGB(255, 255, 106, 106),
             ),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -64,68 +65,68 @@ class _ProfileState extends State<Profile> {
                 children: [
                   ClipOval(
                     child: Image.asset(
-                      'assets/default_user_pfp.jpg', // Updated path
-                      width: 50, // Adjust image size as needed
+                      'assets/default_user_pfp.jpg',
+                      width: 50,
                       height: 50,
                       fit: BoxFit.cover,
                     ),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (_) => const Registration()),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors
-                          .transparent, // Transparent to show border effect
-                      foregroundColor: Colors.white, // Text color
-                      side: const BorderSide(
-                        color: Colors.white,
-                        width: 2,
-                      ),
+                      backgroundColor: Colors.transparent,
+                      foregroundColor: Colors.white,
+                      side: const BorderSide(color: Colors.white, width: 2),
                       padding: const EdgeInsets.symmetric(
-                          vertical: 4.0, horizontal: 8.0), // Adjust padding
-                      minimumSize:
-                          const Size(70, 30), // Set minimum width and height
+                          vertical: 4.0, horizontal: 8.0),
+                      minimumSize: const Size(70, 30),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50),
                       ),
                     ),
                     child: const Text(
                       'Sign in',
-                      style: TextStyle(fontSize: 12), // Adjust font size
+                      style: TextStyle(fontSize: 12),
                     ),
                   ),
-                  //
-                  SizedBox(width: 10),
-                  //
+                  const SizedBox(width: 10),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (_) => const Signup(),
+                        ),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white, // Background color
-                      foregroundColor: const Color.fromARGB(
-                          255, 255, 106, 106), // Text color
+                      backgroundColor: Colors.white,
+                      foregroundColor: const Color.fromARGB(255, 255, 106, 106),
                       padding: const EdgeInsets.symmetric(
-                          vertical: 4.0, horizontal: 8.0), // Adjust padding
-                      minimumSize:
-                          const Size(70, 30), // Set minimum width and height
+                          vertical: 4.0, horizontal: 8.0),
+                      minimumSize: const Size(70, 30),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50),
                       ),
                     ),
                     child: const Text(
                       'Register',
-                      style: TextStyle(fontSize: 12), // Adjust font size
+                      style: TextStyle(fontSize: 12),
                     ),
                   ),
                 ],
               ),
             ),
           ),
-
           // Remaining Page
           Expanded(
             child: Container(
               color: Colors.white,
-              child: Center(
+              child: const Center(
                 child: Text(
                   "Rest of the Page",
                   style: TextStyle(fontSize: 18, color: Colors.grey),

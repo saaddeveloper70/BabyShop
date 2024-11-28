@@ -1,4 +1,5 @@
 import 'package:baby_shop_hub/components/splash_screen.dart';
+import 'package:baby_shop_hub/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'services/firebase_options.dart';

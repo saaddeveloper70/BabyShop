@@ -27,7 +27,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
         if (index == 0) {
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(
-              builder: (_) => const Homepage(),
+              builder: (_) => const Home(),
             ),
           );
         }

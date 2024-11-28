@@ -1,10 +1,19 @@
 import 'package:baby_shop_hub/screens/homepage.dart';
+import 'package:baby_shop_hub/screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
+  void changeScreen(BuildContext context) {
+    Future.delayed(Duration(seconds: 3), () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => LoginScreen()),
+      );
+    });
+  }
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -39,8 +48,8 @@ class _SplashScreenState extends State<SplashScreen>
       Duration(seconds: 3),
       () {
         _controller.forward().then((_) {
-          Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (_) => const Homepage()));
+          Navigator.of(context)
+              .pushReplacement(MaterialPageRoute(builder: (_) => const Home()));
         });
       },
     );

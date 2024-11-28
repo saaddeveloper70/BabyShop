@@ -1,42 +1,62 @@
-import 'package:baby_shop_hub/components/custom_bottom_navbar.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-class Homepage extends StatefulWidget {
-  const Homepage({super.key});
-
-  @override
-  State<Homepage> createState() => _HomepageState();
+void main() {
+  runApp(const Home());
 }
 
-class _HomepageState extends State<Homepage> {
-  final int _selectedIndex = 0; // Track the selected index
-
-  // Function to handle bottom navigation bar item taps
+class Home extends StatelessWidget {
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var screenWidth = MediaQuery.of(context).size.width;
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: Color.fromARGB(255, 255, 106, 106),
-        centerTitle: true,
-        title: Text(
-          'Baby Shop Hub'.toUpperCase(),
-          style: GoogleFonts.jua(
-            textStyle: TextStyle(
-              color: Colors.white,
-              fontSize: screenWidth * 0.06,
-              fontWeight: FontWeight.bold,
-            ),
+        backgroundColor: Colors.red,
+        title: const Text(
+          "Registration",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
           ),
         ),
+        centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.notifications),
+          onPressed: () {
+            // Action for bell icon
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('Bell icon clicked')),
+            );
+          },
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.headphones),
+            onPressed: () {
+              // Action for headphones icon
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Headphone icon clicked')),
+              );
+            },
+          ),
+        ],
       ),
       body: Center(
-        child: Text('Selected Index: $_selectedIndex'), // Example body
+        child: const Text(
+          "Main Content Here",
+          style: TextStyle(fontSize: 18),
+        ),
       ),
-      bottomNavigationBar: CustomBottomNavBar(),
     );
   }
 }
